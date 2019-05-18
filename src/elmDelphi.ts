@@ -77,7 +77,8 @@ function parseImports(elmCode: string) {
 function getAllDependenciesFromElmJson(elmPath: string) {
   const elmJsonPath = path.join(elmPath, 'elm.json');
   const elmJson = JSON.parse(readFile(elmJsonPath)) as ElmJson;
-  return elmJson.dependencies.direct;
+
+  return Object.assign({}, elmJson.dependencies.direct, elmJson["test-dependencies"].direct)
 }
 
 function loadDocsForDependencies(
