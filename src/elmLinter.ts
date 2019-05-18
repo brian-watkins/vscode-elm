@@ -146,6 +146,8 @@ function checkForErrors(fullFilename): Promise<IElmIssue[]> {
       'json',
       '--output',
       '/dev/null',
+      '--compiler',
+      compiler
     ];
     const args = utils.isElm019(elmVersion) ? args019 : args018;
     const makeCommand = utils.isElm019(elmVersion)
