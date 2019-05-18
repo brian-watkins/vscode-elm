@@ -89,7 +89,7 @@ export function GetOracleResults(
     } else if (elmVersion === '0.19') {
       try {
         const result: IOracleResult[] = [
-          ...askOracle(isWindows, cwd, fn, currentWord),
+          ...askOracle(isWindows, config['home'], cwd, fn, currentWord),
           ...(config['userProjectIntellisense']
             ? userProject.userProject(document, position, currentWord, action)
             : []),

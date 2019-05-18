@@ -133,6 +133,7 @@ function searchByModuleName(
 
 export function askOracle(
   windowsOS: boolean,
+  elmHome: string,
   projectPath: string,
   elmFilename: string,
   query: string,
@@ -163,7 +164,8 @@ import Platform.Sub as Sub exposing ( Sub )
 
   const elmRoot = windowsOS
     ? path.join(process.env.appdata, 'elm')
-    : path.join(os.homedir(), '.elm');
+    : elmHome ? path.resolve(elmHome) : path.join(os.homedir(), '.elm')
+
   const packageFolderPath = path.join(elmRoot, '0.19.0/package');
 
   const dependencies = getAllDependenciesFromElmJson(projectPath);

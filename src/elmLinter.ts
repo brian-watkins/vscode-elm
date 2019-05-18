@@ -157,7 +157,10 @@ function checkForErrors(fullFilename): Promise<IElmIssue[]> {
     if (utils.isWindows) {
       make = cp.exec(makeCommand + ' ' + args.join(' '), { cwd: cwd });
     } else {
-      make = cp.spawn(makeCommand, args, { cwd: cwd });
+      make = cp.spawn(makeCommand, args, {
+        cwd: cwd,
+        env: Object.assign({}, process.env, { ELM_HOME: path.resolve(config['home']) })
+      });
     }
     // output is actually optional
     // (fixed in https://github.com/Microsoft/vscode/commit/b4917afe9bdee0e9e67f4094e764f6a72a997c70,

@@ -82,6 +82,11 @@
           "default": "elm-make",
           "description": "Command to run when executing elm make, this is for versions of elm prior to 0.19."
         },
+        "elm.home": {
+          "type": "string",
+          "default": "~/.elm",
+          "description": "Path to Elm Home. This may be relative to the project root."
+        },
         "elm.compiler": {
           "type": "string",
           "default": "elm",
